@@ -1,0 +1,14 @@
+interface:
+  display_name: Analyze Proteomics
+  short_description: Proteomics, phosphosites and imputation impact
+  default_prompt: Use $analyze-proteomics to analyze my proteomics or phosphoproteomics
+    data with PCA, differential abundance, Hallmark enrichment and an imputation audit.
+  icon_small: assets/icon.svg
+  icon_large: assets/icon.svg
+policy:
+  products:
+  - chatgpt
+  - codex
+  - api
+  - atlas
+  allow_implicit_invocation: true

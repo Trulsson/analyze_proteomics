@@ -1,0 +1,32 @@
+{
+  "assay": "proteomics",
+  "organism": "human",
+  "input": {
+    "path": "intensities.csv",
+    "format": "matrix",
+    "scale": "linear",
+    "feature_id_column": "feature_id",
+    "gene_column": "gene_symbol"
+  },
+  "metadata_path": "samples.csv",
+  "sample_id_column": "sample_id",
+  "condition_column": "condition",
+  "global_group_columns": ["condition"],
+  "output_dir": "results",
+  "normalization": "none",
+  "filtering": {"min_total": 4, "min_per_group": 1},
+  "imputations": [
+    {"name": "knn_within_condition", "method": "knn", "scope": "within_group", "neighbors": "features", "k": 3, "weights": "uniform"}
+  ],
+  "limma": {"min_complete_pairs": 4, "min_per_group": 2, "trend": true, "robust": false},
+  "contrasts": [
+    {"name": "treated_vs_control", "factor": "condition", "test": "treated", "reference": "control", "paired": false}
+  ],
+  "alpha": 0.05,
+  "pca_top_features": 500,
+  "pca_labels": false,
+  "palette": {"control": "#0072B2", "treated": "#D55E00"},
+  "formats": ["pdf", "png"],
+  "seed": 42,
+  "enrichment": {"enabled": true, "release": "2024.1.Hs"}
+}
